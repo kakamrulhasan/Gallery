@@ -1,24 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_34/home_screen.dart';
 import 'package:flutter_application_34/model_list.dart';
 
-class DetailsScreen extends StatelessWidget {
+class DetailsScreen extends StatefulWidget {
   final Model model;
   DetailsScreen({required this.model});
+
+  @override
+  State<DetailsScreen> createState() => _DetailsScreenState();
+}
+
+class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green[600],
         centerTitle: true,
-        
-        title: Text(model.title,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) {
+              return HomeScreen();
+            }));
+          },
+          
+          icon: Icon(Icons.arrow_back_ios_new_outlined),
           color: Colors.white,
-        ),),
+        ),
+        title: Text(
+          widget.model.title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         actions: [
-          IconButton(onPressed: (){}, icon:Image.asset('assets/kebab.png',
-           color: Colors.white,),)
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset(
+              'assets/kebab.png',
+              color: Colors.white,
+            ),
+          )
         ],
       ),
       body: Padding(
@@ -33,7 +57,8 @@ class DetailsScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                        image: AssetImage(model.image), fit: BoxFit.cover),
+                        image: AssetImage(widget.model.image),
+                        fit: BoxFit.cover),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black45,
@@ -102,63 +127,66 @@ class DetailsScreen extends StatelessWidget {
             Container(
               width: 410,
               height: 201,
-             child:  GridView.builder(
-              scrollDirection: Axis.vertical,
-        padding: EdgeInsets.all(8),
-        itemCount: photolist.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisSpacing: 15, crossAxisSpacing: 15),
-        itemBuilder: (context, index) {
-          Model _photo = photolist[index];
-          return GestureDetector(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => DetailsScreen(model: _photo))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 150,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
-                        image: AssetImage(_photo.image),
-                        fit: BoxFit.cover),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black45,
-                        offset: const Offset(
-                          5.0,
-                          5.0,
+              child: GridView.builder(
+                scrollDirection: Axis.vertical,
+                padding: EdgeInsets.all(8),
+                itemCount: photolist.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 15,
+                    crossAxisSpacing: 15),
+                itemBuilder: (context, index) {
+                  Model _photo = photolist[index];
+                  return GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DetailsScreen(model: _photo))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 150,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                                image: AssetImage(_photo.image),
+                                fit: BoxFit.cover),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black45,
+                                offset: const Offset(
+                                  5.0,
+                                  5.0,
+                                ),
+                                blurRadius: 10.0,
+                                spreadRadius: 2.0,
+                              ), //BoxShadow
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(padding: EdgeInsets.all(8)),
+                              Text(
+                                _photo.title,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 20),
+                              ),
+                            ],
+                          ),
                         ),
-                        blurRadius: 10.0,
-                        spreadRadius: 2.0,
-                      ), //BoxShadow
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(padding: EdgeInsets.all(8)),
-                      Text(
-                        _photo.title,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             )
           ],
         ),
