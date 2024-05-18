@@ -22,6 +22,8 @@ class HomeScreen extends StatelessWidget {
         ],
         title: Text('Photo Gallery',
         style: TextStyle(
+          
+          fontWeight: FontWeight.bold,
           color: Colors.white
         ),),
         

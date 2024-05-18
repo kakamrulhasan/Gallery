@@ -10,11 +10,10 @@ class DetailsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green[600],
         centerTitle: true,
-         leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios_new_outlined,
-         ),
-        color: Colors.white,),
+        
         title: Text(model.title,
         style: TextStyle(
+          fontWeight: FontWeight.bold,
           color: Colors.white,
         ),),
         actions: [
