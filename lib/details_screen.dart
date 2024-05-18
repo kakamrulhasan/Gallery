@@ -25,7 +25,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             }));
           },
           
-          icon: Icon(Icons.arrow_back_ios_new_outlined ,),
+          icon: Icon(Icons.arrow_back_ios_new_outlined,),
           color: Colors.white,
         ),
         title: Text(
