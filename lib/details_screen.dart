@@ -47,7 +47,7 @@ class DetailsScreen extends StatelessWidget {
                     ],
                   ),
                   height: 330,
-                  width: 360,
+                  width: 400,
                 ),
               ],
             ),
@@ -80,7 +80,7 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(370, 40),
+                    minimumSize: Size(385, 40),
                     shadowColor: Colors.black,
                     elevation: 16,
                     backgroundColor: Colors.green[600],
