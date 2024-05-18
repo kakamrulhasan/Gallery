@@ -10,7 +10,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('data'),
+        backgroundColor: Colors.green[600],
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios_new_outlined),
+        color: Colors.white,),
+        actions: [
+          IconButton(onPressed: (){}, icon:Image.asset('assets/kebab.png',
+          color: Colors.white,),
+          )
+        ],
+        title: Text('Photo Gallery',
+        style: TextStyle(
+          color: Colors.white
+        ),),
+        
       ),
       body: GridView.builder(
         padding: EdgeInsets.all(8),
